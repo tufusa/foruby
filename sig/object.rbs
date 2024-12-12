@@ -1,0 +1,3 @@
+class Object
+  def using: (Module module) -> self
+end

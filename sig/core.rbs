@@ -1,0 +1,7 @@
+module Foruby::Core
+  @@fragments: Array[Foruby::Fragment]
+
+  %a{pure} def self.fragments: -> Array[Foruby::Fragment]
+  def self.check: (String | Foruby::Fragment) -> void
+  def self.push: (String) -> void
+end

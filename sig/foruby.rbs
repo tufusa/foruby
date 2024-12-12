@@ -1,0 +1,3 @@
+module Foruby
+  VERSION: String
+end

@@ -1,0 +1,5 @@
+module Foruby::Refinement
+  extend Foruby::Util::MakeAlias
+
+  @@make_alias: ^(Module mod, Array[Symbol] methods) -> void
+end

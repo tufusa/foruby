@@ -1,0 +1,3 @@
+module Foruby::Util::MakeAlias : Module
+  def make_alias: (Module mod, Array[Symbol] methods) -> void
+end

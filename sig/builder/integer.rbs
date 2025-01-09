@@ -1,0 +1,7 @@
+class Foruby::IntegerBuilder < Foruby::Builder[Integer]
+  def initialize: (?int?) -> void
+
+  def build: () -> Foruby::IntegerFragment
+
+  def declaration: (string name) -> Foruby::Fragment[void]
+end

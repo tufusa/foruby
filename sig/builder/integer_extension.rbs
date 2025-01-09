@@ -1,0 +1,3 @@
+module Foruby::IntegerBuilderExtension
+  def integer: (?int?) -> Foruby::IntegerBuilder
+end

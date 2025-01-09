@@ -1,0 +1,7 @@
+class Foruby::Builder[T]
+  @value: T?
+
+  def build: () -> Foruby::Fragment[T]
+
+  def declaration: (string) -> Foruby::Fragment[void]
+end

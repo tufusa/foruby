@@ -1,3 +1,7 @@
 module Foruby::Util::MakeAlias : Module
+  METHOD_MAP: Hash[Symbol, Symbol]
+
   def make_alias: (Module mod, Array[Symbol] methods) -> void
+
+  private def method_name: (Symbol) -> Symbol
 end

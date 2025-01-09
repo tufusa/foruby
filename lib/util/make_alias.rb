@@ -7,10 +7,24 @@ module Foruby
       def make_alias(mod, methods)
         methods.each do |method|
           base_name = method.to_s.delete_prefix('_')
-          mod.alias_method :"origin_#{base_name}", :"#{base_name}"
-          mod.alias_method :"#{base_name}", method
+          name = method_name base_name.to_sym
+          mod.alias_method :"origin_#{name}", :"#{name}"
+          mod.alias_method :"#{name}", method
         end
       end
+
+      private
+
+      def method_name(source)
+        METHOD_MAP.fetch source, source
+      end
+
+      METHOD_MAP = {
+        plus: :+,
+        minus: :-,
+        multiple: :*,
+        divide: :/
+      }.freeze
     end
   end
 end

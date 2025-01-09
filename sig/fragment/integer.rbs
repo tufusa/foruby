@@ -1,4 +1,4 @@
-class Foruby::IntegerFragment < Foruby::Fragment
+class Foruby::IntegerFragment < Foruby::Fragment[Integer]
   def +: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment
 
   def -: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment

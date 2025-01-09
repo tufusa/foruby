@@ -1,7 +1,7 @@
 module Foruby::Core
-  @@fragments: Array[Foruby::Fragment]
+  @@fragments: Array[Foruby::Fragment[untyped]]
 
-  %a{pure} def self.fragments: -> Array[Foruby::Fragment]
-  def self.check: (String | Integer | Foruby::Fragment) -> void
-  def self.push: (String | Foruby::Fragment) -> Foruby::Fragment
+  %a{pure} def self.fragments: -> Array[Foruby::Fragment[untyped]]
+  def self.check: (String | Integer | Foruby::Fragment[untyped]) -> void
+  def self.push: (String | Foruby::Fragment[untyped]) -> Foruby::Fragment[untyped]
 end

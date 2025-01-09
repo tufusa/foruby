@@ -1,4 +1,4 @@
-class Foruby::Fragment
+class Foruby::Fragment[T]
   include _Inspect
   attr_reader code: String
 

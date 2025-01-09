@@ -1,0 +1,11 @@
+module Foruby::Refinement::IntegerRefinement
+  def _plus: (Integer | Foruby::IntegerFragment) -> Foruby::IntegerFragment
+
+  def _minus: (Integer | Foruby::IntegerFragment) -> Foruby::IntegerFragment
+
+  def _multiple: (Integer | Foruby::IntegerFragment) -> Foruby::IntegerFragment
+
+  def _divide: (Integer | Foruby::IntegerFragment) -> Foruby::IntegerFragment
+
+  def abs: () -> Foruby::IntegerFragment
+end

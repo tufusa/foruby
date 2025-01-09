@@ -2,6 +2,6 @@ module Foruby::Core
   @@fragments: Array[Foruby::Fragment]
 
   %a{pure} def self.fragments: -> Array[Foruby::Fragment]
-  def self.check: (String | Foruby::Fragment) -> void
-  def self.push: (String) -> void
+  def self.check: (String | Integer | Foruby::Fragment) -> void
+  def self.push: (String | Foruby::Fragment) -> Foruby::Fragment
 end

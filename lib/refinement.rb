@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'refinement/kernel'
+require_relative 'refinement/integer'
 require_relative 'util/make_alias'
 
 module Foruby
@@ -13,9 +14,10 @@ module Foruby
       import_methods KernelRefinement
       @@make_alias[self, KernelRefinement.instance_methods]
     end
+
+    refine Integer do
+      import_methods IntegerRefinement
+      @@make_alias[self, IntegerRefinement.instance_methods]
+    end
   end
 end
-
-# module Refinement
-#   extend MakeAlias
-# end

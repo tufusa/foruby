@@ -12,11 +12,12 @@ module Foruby
     end
 
     def self.check(code)
-      @@fragments.pop if code.is_a? Fragment
+      @@fragments.reject! { _1 == code } if code.is_a? Fragment
     end
 
     def self.push(code)
-      @@fragments << Fragment.new(code:)
+      fragment = code.is_a?(Fragment) ? code : Fragment.new(code:)
+      fragment.tap { @@fragments << _1 }
     end
   end
 end

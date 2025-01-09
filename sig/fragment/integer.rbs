@@ -1,0 +1,11 @@
+class Foruby::IntegerFragment < Foruby::Fragment
+  def +: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment
+
+  def -: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment
+
+  def *: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment
+
+  def /: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment
+
+  def abs: () -> Foruby::IntegerFragment
+end

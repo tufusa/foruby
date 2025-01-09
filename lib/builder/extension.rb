@@ -5,7 +5,7 @@ require_relative 'integer'
 
 module Foruby
   # Extension for IntegerBuilder
-  module IntegerBuilderExtension
+  module BuilderExtension
     def integer(value = nil)
       IntegerBuilder.new value
     end

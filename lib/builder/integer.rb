@@ -10,12 +10,19 @@ module Foruby
       super()
     end
 
+    def parameter
+      super()
+      self
+    end
+
     def build
       IntegerFragment.new code: @value.inspect
     end
 
     def declaration(name)
-      Fragment.new code: "integer :: #{name.to_str} #{@value.nil? ? '' : "= #{@value}"}"
+      attributes = @is_parameter ? ',parameter' : ''
+      initial = @value.nil? ? '' : "= #{@value}"
+      Fragment.new code: "integer#{attributes} :: #{name.to_str} #{initial}"
     end
   end
 end

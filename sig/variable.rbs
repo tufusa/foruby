@@ -1,0 +1,13 @@
+class Foruby::Variable[T]
+  @name: Symbol
+  @value: T
+
+  attr_reader name: Symbol
+  attr_accessor value: T
+
+  def initialize: (_ToSym name, T value) -> void
+
+  def inspect: () -> Symbol
+
+  def assignment: (T) -> Foruby::Fragment[void]
+end

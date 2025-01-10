@@ -2,6 +2,7 @@
 
 require_relative 'core'
 require_relative 'refinement'
+require_relative 'tracer'
 
 # Foruby top module
 module Foruby

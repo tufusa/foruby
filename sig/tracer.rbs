@@ -1,0 +1,5 @@
+module Foruby::Tracer
+  def self.trace: (Binding bin) -> TracePoint
+
+  def self.get_values: (Array[Symbol] variables, Binding bin) -> Array[untyped]
+end

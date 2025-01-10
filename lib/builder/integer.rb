@@ -5,18 +5,16 @@ require_relative '../builder'
 module Foruby
   # Primitive builder for integer
   class IntegerBuilder < Builder
-    def initialize(value = nil)
+    def initialize
+      @value = nil
+      super()
+    end
+
+    def set(value = nil)
       @value = value.to_int if value
-      super()
-    end
+      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && nil.equal?(@value)
 
-    def parameter
-      super()
-      self
-    end
-
-    def build
-      IntegerFragment.new code: @value.inspect
+      IntegerFragment.new code: @value&.inspect || '', builder: self
     end
 
     def declaration(name)

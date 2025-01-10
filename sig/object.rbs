@@ -1,3 +1,5 @@
 class Object
+  private
+
   def using: (Module module) -> self
 end

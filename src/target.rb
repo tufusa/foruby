@@ -1,7 +1,6 @@
 # frozen-string-literal: true
 
 require './lib/foruby'
-require './lib/tracer'
 
 using Foruby
 Foruby::Tracer.trace binding

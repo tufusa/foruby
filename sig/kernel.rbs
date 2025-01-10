@@ -1,3 +1,0 @@
-module Kernel
-  def self?.integer: (?Integer?) -> Foruby::IntegerBuilder
-end

@@ -20,16 +20,17 @@ module Foruby
 
             next new_value unless is_changed
 
-            if old_value.nil? && new_value.is_a?(Builder) # new declaration
-              Core.push new_value.declaration(name.to_s)
+            if old_value.nil? && new_value.is_a?(Fragment) &&
+               !new_value.builder.nil? && new_value.variable.nil? # new declaration
+              Core.push new_value.builder.declaration(name.to_s)
 
-              variable = Variable.new name, new_value.build
-              new_value = variable
+              new_value.variable = Variable.new name, new_value
               bin.local_variable_set name, new_value
-            elsif old_value.is_a?(Variable) # assign
-              Core.push old_value.assignment(new_value.inspect)
+            elsif old_value.is_a?(Fragment) && !old_value.variable.nil? # assign
+              Core.check new_value
+              Core.push old_value.variable.assignment(new_value.inspect)
 
-              old_value.value = new_value
+              old_value.variable.value = new_value
               new_value = old_value
               bin.local_variable_set name, new_value
             end

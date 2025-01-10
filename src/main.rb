@@ -5,7 +5,8 @@ require './src/target'
 code = Foruby::Core.fragments.map(&:code).join("\n")
 program = <<~"PROGRAM"
   program main
-  #{code}
+    implicit none
+    #{code}
   endprogram main
 PROGRAM
 

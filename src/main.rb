@@ -2,7 +2,7 @@
 
 require './src/target'
 
-code = Foruby::Core.fragments.map(&:code).join("\n")
+code = Foruby::Core.fragments[Foruby::Core.top_binding].map(&:code).join("\n")
 program = <<~"PROGRAM"
   program main
     implicit none

@@ -4,6 +4,7 @@ require_relative 'refinement/kernel'
 require_relative 'refinement/integer'
 require_relative 'refinement/range'
 require_relative 'builder/extension'
+require_relative 'function/extension'
 require_relative 'util/make_alias'
 
 module Foruby
@@ -17,6 +18,7 @@ module Foruby
       @@make_alias[self, KernelRefinement.instance_methods]
 
       import_methods BuilderExtension
+      import_methods FunctionExtension
     end
 
     refine Integer do

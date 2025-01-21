@@ -1,0 +1,3 @@
+class Range[out Elem] < Object
+  def each: () { (Foruby::IntegerFragment arg) -> Foruby::Fragment[untyped] } -> Foruby::Fragment[untyped] | ...
+end

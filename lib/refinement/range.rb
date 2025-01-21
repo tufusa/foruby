@@ -8,22 +8,22 @@ module Foruby
 
       def _each(&block)
         params = block.parameters(lambda: true)
-        throw ArgumentError, 'Too few argument' if params.empty?
-        throw ArgumentError, 'Too many argument' if params.size > 1
+        raise ArgumentError, 'Too few argument' if params.empty?
+        raise ArgumentError, 'Too many argument' if params.size > 1
 
         first = self.begin
         last = self.end
-        throw ArgumentError, 'Infinite range' unless first && last
+        raise ArgumentError, 'Infinite range' unless first && last
 
-        last = last.send :"origin_-", 1 if exclude_end?
+        last = last.method(:"origin_-")[1] if exclude_end?
 
         loop_var = IntegerFragment.new code: ''
         loop_var.variable = Variable.new params[0][1], first
 
+        Core.add_variable params[0][1], integer
         body = Core.add_block block.binding do
           block[loop_var]
-        end
-        Core.check(body)
+        end.fragments.map(&:code).join "\n"
 
         code = <<~DO
           do #{loop_var} = #{first}, #{last}

@@ -1,0 +1,19 @@
+class Foruby::VoidFunction
+  include Foruby::_Function
+
+  type func = ^(*untyped) -> void
+
+  @function: func
+  @parameters: Hash[Symbol, Foruby::Builder[untyped]]
+  @definer: ^(Symbol name) -> Foruby::Fragment[untyped]
+
+  def initialize: (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+  ) { (*untyped) -> untyped } -> void
+
+  def call: (*untyped) -> void | ...
+
+  alias [] call
+
+  private def definer: () -> ^(Symbol name) -> Foruby::Fragment[untyped]
+end

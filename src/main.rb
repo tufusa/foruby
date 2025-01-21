@@ -2,11 +2,21 @@
 
 require './src/target'
 
-code = Foruby::Core.fragments[Foruby::Core.top_binding].map(&:code).join("\n")
+top = Foruby::Core.scopes[Foruby::Core.top_binding]
+
+variables = top.variables.map(&:code).join("\n")
+body = top.fragments.map(&:code).join("\n")
+functions = top.functions.map(&:code).join("\n\n")
+
 program = <<~"PROGRAM"
   program main
     implicit none
-    #{code}
+
+    #{variables}
+
+    #{body}
+  contains
+    #{functions}
   endprogram main
 PROGRAM
 

@@ -2,4 +2,4 @@
 
 source 'https://rubygems.org'
 
-gem 'steep', require: false
+gem 'steep', '~> 1.9.0', require: false

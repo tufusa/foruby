@@ -22,10 +22,14 @@ module Foruby
 
             if old_value.nil? && new_value.is_a?(Fragment) &&
                !new_value.builder.nil? && new_value.variable.nil? # new declaration
-              Core.push new_value.builder.declaration(name.to_s)
+              Core.add_variable name, new_value.builder
 
               new_value.variable = Variable.new name, new_value
               bin.local_variable_set name, new_value
+            elsif old_value.nil? && (new_value.is_a?(Function) || new_value.is_a?(VoidFunction)) # new method definition
+              new_value.name = name
+              Core.top_binding.receiver.define_singleton_method(name) { |*params| new_value[*params] }
+              Core.add_function new_value
             elsif old_value.is_a?(Fragment) && !old_value.variable.nil? # assign
               Core.check new_value
               Core.push old_value.variable.assignment(new_value.inspect)
@@ -34,8 +38,6 @@ module Foruby
               new_value = old_value
               bin.local_variable_set name, new_value
             end
-
-            puts "assign: #{name} <- #{new_value.value}" if new_value.is_a?(Variable)
             new_value
           end
 

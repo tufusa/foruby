@@ -22,7 +22,7 @@ module Foruby
 
             if old_value.nil? && new_value.is_a?(Fragment) &&
                !new_value.builder.nil? && new_value.variable.nil? # new declaration
-              Core.push new_value.builder.declaration(name.to_s)
+              Core.add_variable name, new_value.builder
 
               new_value.variable = Variable.new name, new_value
               bin.local_variable_set name, new_value

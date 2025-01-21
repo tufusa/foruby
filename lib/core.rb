@@ -50,6 +50,11 @@ module Foruby
 
       scope
     end
+
+    def self.add_variable(name, builder)
+      scopes[top_binding] = Scope.new unless scopes.key? top_binding
+
+      builder.declaration(name.to_s).tap { scopes[top_binding].variables << _1 }
     end
   end
 end

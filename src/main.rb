@@ -11,7 +11,12 @@ functions = top.functions.map(&:code).join("\n\n")
 program = <<~"PROGRAM"
   program main
     implicit none
-    #{code}
+
+    #{variables}
+
+    #{body}
+  contains
+    #{functions}
   endprogram main
 PROGRAM
 

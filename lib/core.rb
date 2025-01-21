@@ -56,5 +56,11 @@ module Foruby
 
       builder.declaration(name.to_s).tap { scopes[top_binding].variables << _1 }
     end
+
+    def self.add_function(function)
+      scopes[top_binding] = Scope.new unless scopes.key? top_binding
+
+      function.definition.tap { scopes[top_binding].functions << _1 }
+    end
   end
 end

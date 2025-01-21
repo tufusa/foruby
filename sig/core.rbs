@@ -16,4 +16,7 @@ module Foruby::Core
 
   def self.add_block: (Binding) { () -> untyped } -> Foruby::Scope
 
+  def self.add_variable: [T](Symbol name, Foruby::Builder[T] builder) -> Foruby::Fragment[untyped]
+
+  def self.add_function: (Foruby::_Function) -> Foruby::Fragment[untyped]
 end

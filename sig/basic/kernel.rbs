@@ -1,3 +1,11 @@
 module Kernel
   def self?.integer: () -> Foruby::IntegerBuilder
+
+  def function: [ReturnType < Object] (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::Builder[ReturnType] return_type
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[ReturnType]] -> untyped } -> Foruby::Function[ReturnType]
+  | (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters
+  ) { (*untyped) -> untyped } -> Foruby::VoidFunction
 end

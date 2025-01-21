@@ -1,0 +1,11 @@
+interface Foruby::_Function
+  def name: () -> Symbol
+
+  def name=: (Symbol) -> Symbol
+
+  def call: (*untyped) -> untyped
+
+  alias [] call
+
+  def definition: () -> Foruby::Fragment[untyped]
+end

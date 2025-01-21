@@ -1,0 +1,27 @@
+class Foruby::Function[ReturnType < Object]
+  include Foruby::_Function
+
+  interface _Self[ReturnType]
+    def result: (ReturnType | Foruby::Fragment[ReturnType]) -> Foruby::Fragment[ReturnType]
+  end
+
+  type func[ReturnType] = ^(*untyped) [self: Object & _Self[ReturnType]] -> Foruby::Fragment[ReturnType]
+
+  @function: func[ReturnType]
+  @return_type: Foruby::Builder[ReturnType]?
+  @parameters: Hash[Symbol, Foruby::Builder[untyped]]
+  @definer: ^(Symbol name) -> Foruby::Fragment[untyped]
+
+  def initialize: (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::Builder[ReturnType] return_type
+  ) { (*untyped) [self: Object & _Self[ReturnType]] -> untyped } -> void
+
+  def call: (*untyped) -> Foruby::Fragment[ReturnType] | ...
+
+  alias [] call
+
+  private def definer: () -> ^(Symbol name) -> Foruby::Fragment[untyped]
+
+  private def result: (ReturnType | Foruby::Fragment[ReturnType]) -> Foruby::Fragment[ReturnType]
+end

@@ -1,10 +1,10 @@
 module Foruby::Core
-  type fragments = Hash[Binding, Array[Foruby::Fragment[untyped]]]
+  type scopes = Hash[Binding, Foruby::Scope]
 
-  @@fragments: fragments
+  @@scopes: scopes
   @@top_binding: Binding
 
-  %a{pure} def self.fragments: -> fragments
+  %a{pure} def self.scopes: -> scopes
 
   def self.top_binding: -> Binding
 
@@ -12,7 +12,8 @@ module Foruby::Core
 
   def self.check: (String | Integer | Foruby::Fragment[untyped]) -> void
 
-  def self.push: (String | Foruby::Fragment[untyped], ?bin: Binding?) -> Foruby::Fragment[untyped]
+  def self.push: (String | Foruby::Fragment[untyped]) -> Foruby::Fragment[untyped]
 
-  def self.add_block: (Binding) { () -> void } -> Foruby::Fragment[untyped]
+  def self.add_block: (Binding) { () -> untyped } -> Foruby::Scope
+
 end

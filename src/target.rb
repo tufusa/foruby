@@ -2,9 +2,7 @@
 
 require './lib/foruby'
 
-using Foruby
-Foruby::Core.top_binding = binding
-Foruby::Tracer.trace binding
+f = Foruby.init binding
 
 a = integer.set
 b = integer.parameter.set(1)
@@ -31,12 +29,10 @@ puts sum
 
 double = function(
   {
-    num: integer,
-    n2: integer,
-    n3: integer
+    num: integer
   },
   integer
-) do |num, n2, n3|
+) do |num|
   a += num
   result(num * 2)
 end
@@ -49,6 +45,14 @@ say = function(
   puts num
 end
 
-say[double[100, 1, 2]]
+say[double[100]]
 
 puts a
+
+f.if a == 1 do
+  puts 'a is 1'
+end.else_if a == 2 do
+  puts 'a is 2'
+end.else do
+  puts 'idk'
+end

@@ -16,7 +16,7 @@ module Foruby
     Foruby::Tracer.trace bin
 
     # **FORGIVE ME EVAL IS ONLY THIS ONE I PROMISE**
-    bin.eval 'using Foruby'
+    bin.eval "using #{Foruby}"
 
     Feature.new
   end

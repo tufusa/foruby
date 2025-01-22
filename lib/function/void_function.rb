@@ -11,12 +11,12 @@ module Foruby
 
     def initialize(parameters, &block)
       @parameters = parameters
-      if @parameters.size != block.parameters.size
+      unless @parameters.size.equal? block.parameters.size
         raise ArgumentError,
               "Wrong number of block arguments (given #{block.parameters.size}, expected #{parameters.size})"
       end
       @parameters.keys.zip(block.parameters.map(&:last)) do |expected, given|
-        next if expected == given
+        next if expected.equal? given
 
         raise ArgumentError,
               "Wrong name of block arguments (given #{given}, expected #{expected})"

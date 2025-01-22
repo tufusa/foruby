@@ -10,7 +10,7 @@ module Foruby::Core
 
   def self.top_binding=: (Binding) -> Binding
 
-  def self.check: (String | Integer | Foruby::Fragment[untyped]) -> void
+  def self.check: (Object) -> void
 
   def self.push: (String | Foruby::Fragment[untyped]) -> Foruby::Fragment[untyped]
 

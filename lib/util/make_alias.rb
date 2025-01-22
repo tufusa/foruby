@@ -23,7 +23,8 @@ module Foruby
         plus: :+,
         minus: :-,
         multiple: :*,
-        divide: :/
+        divide: :/,
+        equal: :==
       }.freeze
     end
   end

@@ -9,12 +9,12 @@ module Foruby
     def initialize(parameters, return_type, &block)
       @return_type = return_type
       @parameters = parameters
-      if @parameters.size != block.parameters.size
+      unless @parameters.size.equal? block.parameters.size
         raise ArgumentError,
               "Wrong number of block arguments (given #{block.parameters.size}, expected #{parameters.size})"
       end
       @parameters.keys.zip(block.parameters.map(&:last)) do |expected, given|
-        next if expected == given
+        next if expected.equal? given
 
         raise ArgumentError,
               "Wrong name of block arguments (given #{given}, expected #{expected})"
@@ -82,7 +82,7 @@ module Foruby
     end
 
     def result(res)
-      Core.check(res) if res.is_a?(Fragment)
+      Core.check res
       Core.push <<~CODE
         ret_#{hash} = #{res}
         return

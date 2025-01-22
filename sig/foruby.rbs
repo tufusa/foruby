@@ -1,3 +1,5 @@
 module Foruby
   VERSION: String
+
+  def self.init: (Binding) -> Feature
 end

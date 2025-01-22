@@ -23,8 +23,12 @@ module Foruby
         Foruby::IntegerFragment.new(code: inspect) / other
       end
 
-      def abs
+      def _abs
         Foruby::IntegerFragment.new(code: inspect).abs
+      end
+
+      def _equal(other)
+        Foruby::IntegerFragment.new(code: inspect) == other
       end
     end
   end

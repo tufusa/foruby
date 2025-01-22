@@ -24,7 +24,7 @@ module Foruby
     def self.check(code)
       return unless code.is_a? Fragment
 
-      scopes.each_value { |scope| scope.fragments.reject! { _1 == code } }
+      scopes.each_value { |scope| scope.fragments.reject! { _1.equal? code } }
     end
 
     def self.push(code)

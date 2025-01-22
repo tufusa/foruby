@@ -16,7 +16,7 @@ module Foruby
           new_values = variables.map.with_index do |name, i|
             old_value = values[i]
             new_value = current_values[i]
-            is_changed = old_value != new_value
+            is_changed = !old_value.equal?(new_value)
 
             next new_value unless is_changed
 

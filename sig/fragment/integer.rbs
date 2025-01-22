@@ -8,4 +8,6 @@ class Foruby::IntegerFragment < Foruby::Fragment[Integer]
   def /: (Foruby::IntegerFragment | Integer) -> Foruby::IntegerFragment
 
   def abs: () -> Foruby::IntegerFragment
+
+  def ==: (Foruby::IntegerFragment | Integer) -> Foruby::Fragment[bool]
 end

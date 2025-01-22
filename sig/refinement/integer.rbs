@@ -7,5 +7,7 @@ module Foruby::Refinement::IntegerRefinement
 
   def _divide: (Integer | Foruby::IntegerFragment) -> Foruby::IntegerFragment
 
-  def abs: () -> Foruby::IntegerFragment
+  def _abs: () -> Foruby::IntegerFragment
+
+  def _equal: (Integer | Foruby::IntegerFragment) -> Foruby::Fragment[bool]
 end

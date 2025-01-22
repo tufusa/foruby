@@ -1,0 +1,25 @@
+class Foruby::IfBuilder
+  type condition = bool | Foruby::Fragment[bool]
+
+  @branches: Array[{condition: condition, action: ^() -> untyped}]
+  @else_action: (^() -> untyped)?
+  @latest_pushed: Foruby::Fragment[untyped]?
+
+  def initialize: (condition) { () -> untyped } -> void
+
+  def else_if: (condition) { () -> untyped } -> self
+
+  def else: () { () -> untyped } -> void
+
+  private def push_build: () -> void
+
+  private def build: () -> Foruby::Fragment[untyped]
+
+  private def if_statement: () -> String
+
+  private def else_if_statement: () -> String?
+
+  private def else_statement: () -> String?
+
+  private def end_if_statement: () -> String
+end

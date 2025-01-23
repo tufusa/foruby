@@ -1,3 +1,5 @@
 class Foruby::Feature
   def if: (Foruby::IfBuilder::condition) { () -> untyped } -> Foruby::IfBuilder
+
+  def eval: (String) -> void
 end

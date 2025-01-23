@@ -56,3 +56,5 @@ end.else_if a == 2 do
 end.else do
   puts 'idk'
 end
+
+f.eval "print '(I5.5)', a"

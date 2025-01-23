@@ -8,27 +8,31 @@ module Foruby
     # Refinement module for Integer
     module IntegerRefinement
       def _plus(other)
-        Foruby::IntegerFragment.new(code: inspect) + other
+        IntegerFragment.new(code: inspect) + other
       end
 
       def _minus(other)
-        Foruby::IntegerFragment.new(code: inspect) - other
+        IntegerFragment.new(code: inspect) - other
       end
 
       def _multiple(other)
-        Foruby::IntegerFragment.new(code: inspect) * other
+        IntegerFragment.new(code: inspect) * other
       end
 
       def _divide(other)
-        Foruby::IntegerFragment.new(code: inspect) / other
+        IntegerFragment.new(code: inspect) / other
       end
 
       def _abs
-        Foruby::IntegerFragment.new(code: inspect).abs
+        IntegerFragment.new(code: inspect).abs
       end
 
       def _equal(other)
-        Foruby::IntegerFragment.new(code: inspect) == other
+        IntegerFragment.new(code: inspect) == other
+      end
+
+      def _not_equal(other)
+        IntegerFragment.new(code: inspect) != other
       end
     end
   end

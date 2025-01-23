@@ -5,7 +5,8 @@ require './lib/foruby'
 f = Foruby.init binding
 
 a = integer.set
-b = integer.parameter.set(1)
+b = integer.parameter.set 1
+l = logical.set true
 
 puts 'Hello, world!'
 puts ((1 + 1 * 4 - 2).abs + -8.abs / 2).abs / 3
@@ -53,6 +54,8 @@ f.if a == 1 do
   puts 'a is 1'
 end.else_if a == 2 do
   puts 'a is 2'
+end.else_if ((a == 4) | (a != 5)) | l do
+  puts true
 end.else do
   puts 'idk'
 end

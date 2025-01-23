@@ -1,7 +1,7 @@
 class Foruby::IfBuilder
-  type condition = bool | Foruby::Fragment[bool]
+  type condition = bool | Foruby::LogicalFragment
 
-  @branches: Array[{condition: condition, action: ^() -> untyped}]
+  @branches: Array[{condition: Foruby::LogicalFragment, action: ^() -> untyped}]
   @else_action: (^() -> untyped)?
   @latest_pushed: Foruby::Fragment[untyped]?
 

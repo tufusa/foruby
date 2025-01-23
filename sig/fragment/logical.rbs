@@ -1,0 +1,15 @@
+class Foruby::LogicalFragment < Foruby::Fragment[bool]
+  def !: () -> instance
+
+  def &: (instance | bool) -> instance
+
+  def |: (instance | bool) -> instance
+
+  def ^: (instance | bool) -> instance
+
+  def ==: (instance | bool) -> instance
+
+  def !=: (instance | bool) -> instance
+
+  def self.from: (Foruby::LogicalFragment | bool) -> instance
+end

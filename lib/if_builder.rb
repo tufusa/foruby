@@ -7,12 +7,14 @@ module Foruby
   class IfBuilder
     def initialize(condition, &action)
       Core.check condition
+      condition = LogicalFragment.from condition
       @branches = [{ condition:, action: }]
       push_build
     end
 
     def else_if(condition, &action)
       Core.check condition
+      condition = LogicalFragment.from condition
       @branches << { condition:, action: }
       push_build
       self

@@ -2,6 +2,7 @@
 
 require_relative 'refinement/kernel'
 require_relative 'refinement/integer'
+require_relative 'refinement/bool'
 require_relative 'refinement/range'
 require_relative 'builder/extension'
 require_relative 'function/extension'
@@ -13,17 +14,30 @@ module Foruby
     extend Util::MakeAlias
     @@make_alias = ->(mod, methods) { make_alias mod, methods } # rubocop:disable Style/ClassVars
 
+    # "使われる方"を先にrefineする
+    # e.g. `puts true`では`true`が`Kernel#puts`に使われている
+
+    refine TrueClass do
+      import_methods BoolRefinement
+      @@make_alias[self, BoolRefinement.instance_methods]
+    end
+
+    refine FalseClass do
+      import_methods BoolRefinement
+      @@make_alias[self, BoolRefinement.instance_methods]
+    end
+
+    refine Integer do
+      import_methods IntegerRefinement
+      @@make_alias[self, IntegerRefinement.instance_methods]
+    end
+
     refine Kernel do
       import_methods KernelRefinement
       @@make_alias[self, KernelRefinement.instance_methods]
 
       import_methods BuilderExtension
       import_methods FunctionExtension
-    end
-
-    refine Integer do
-      import_methods IntegerRefinement
-      @@make_alias[self, IntegerRefinement.instance_methods]
     end
 
     refine Range do

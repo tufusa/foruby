@@ -9,5 +9,10 @@ module Foruby
     def if(condition, &block)
       IfBuilder.new condition, &block
     end
+
+    def eval(program)
+      Core.push program
+      nil
+    end
   end
 end

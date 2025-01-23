@@ -1,0 +1,17 @@
+module Foruby::Refinement::BoolRefinement
+  type fragment = Foruby::LogicalFragment
+
+  def _not: () -> fragment
+
+  def _and: (bool | fragment) -> fragment
+
+  def _or: (bool | fragment) -> fragment
+
+  def _xor: (bool | fragment) -> fragment
+
+  def _equal: (bool | fragment) -> fragment
+
+  def _not_equal: (bool | fragment) -> fragment
+
+  def _inspect: () -> String
+end

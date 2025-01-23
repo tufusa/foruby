@@ -24,7 +24,12 @@ module Foruby
         minus: :-,
         multiple: :*,
         divide: :/,
-        equal: :==
+        equal: :==,
+        not: :!,
+        and: :&,
+        or: :|,
+        xor: :^,
+        not_equal: :!=
       }.freeze
     end
   end

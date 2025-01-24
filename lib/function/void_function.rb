@@ -61,12 +61,15 @@ module Foruby
       scope = Core.add_block(@function.binding) do
         @function[*params]
       end
+      uses = scope.uses.map(&:code).join "\n"
       variables = scope.variables.map(&:code).join "\n"
       body = scope.fragments.map(&:code).join "\n"
 
       lambda do |name|
         Fragment.new code: <<~CODE
           subroutine #{name}(#{@parameters.keys.join ','})
+            #{uses}
+
             implicit none
 
             #{params_definition}

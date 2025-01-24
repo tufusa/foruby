@@ -4,6 +4,8 @@ require './lib/foruby'
 
 f = Foruby.init binding
 
+use 'iso_fortran_env', only: 'int32'
+
 a = integer.set
 b = integer.parameter.set 1
 l = logical.set true

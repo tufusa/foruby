@@ -61,6 +61,7 @@ module Foruby
       scope = Core.add_block @function.binding do
         @function[*params]
       end
+      uses = scope.uses.map(&:code).join "\n"
       variables = scope.variables.map(&:code).join "\n"
       body = scope.fragments.map(&:code).join "\n"
 
@@ -69,6 +70,8 @@ module Foruby
 
         Fragment.new code: <<~CODE
           integer function #{name}(#{@parameters.keys.join ','}) result(ret_#{name})
+            #{uses}
+
             implicit none
 
             #{params_definition}

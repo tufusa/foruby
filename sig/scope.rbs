@@ -1,4 +1,5 @@
 class Foruby::Scope
+  attr_reader uses: Array[Foruby::Fragment[untyped]]
   attr_reader variables: Array[Foruby::Fragment[untyped]]
   attr_reader fragments: Array[Foruby::Fragment[untyped]]
   attr_reader functions: Array[Foruby::Fragment[untyped]]

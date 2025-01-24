@@ -7,6 +7,7 @@ require_relative 'refinement/range'
 require_relative 'builder/extension'
 require_relative 'function/extension'
 require_relative 'util/make_alias'
+require_relative 'use'
 
 module Foruby
   # Refinement module
@@ -38,6 +39,7 @@ module Foruby
 
       import_methods BuilderExtension
       import_methods FunctionExtension
+      import_methods UseExtension
     end
 
     refine Range do

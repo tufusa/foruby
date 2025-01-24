@@ -9,11 +9,13 @@ use 'iso_fortran_env', only: 'int32'
 a = integer.set
 b = integer.parameter.set 1
 l = logical.set true
+arr = integer.dimension(3, -1..1).parameter.set(-10)
 
 puts 'Hello, world!'
 puts ((1 + 1 * 4 - 2).abs + -8.abs / 2).abs / 3
 puts a
 puts b
+puts arr
 
 c = 1
 d = integer.set(2)

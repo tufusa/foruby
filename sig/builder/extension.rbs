@@ -1,5 +1,7 @@
 module Foruby::BuilderExtension
   def integer: () -> Foruby::IntegerBuilder
 
+  def real: () -> Foruby::RealBuilder
+
   def logical: () -> Foruby::LogicalBuilder
 end

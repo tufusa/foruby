@@ -1,15 +1,17 @@
 class Foruby::LogicalFragment < Foruby::Fragment[bool]
+  type primitive = bool
+
   def !: () -> instance
 
-  def &: (instance | bool) -> instance
+  def &: (instance | primitive) -> instance
 
-  def |: (instance | bool) -> instance
+  def |: (instance | primitive) -> instance
 
-  def ^: (instance | bool) -> instance
+  def ^: (instance | primitive) -> instance
 
-  def ==: (instance | bool) -> instance
+  def ==: (instance | primitive) -> instance
 
-  def !=: (instance | bool) -> instance
+  def !=: (instance | primitive) -> instance
 
-  def self.from: (Foruby::LogicalFragment | bool) -> instance
+  def self.from: (Foruby::LogicalFragment | primitive) -> instance
 end

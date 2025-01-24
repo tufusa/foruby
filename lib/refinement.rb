@@ -3,6 +3,7 @@
 require_relative 'refinement/kernel'
 require_relative 'refinement/integer'
 require_relative 'refinement/bool'
+require_relative 'refinement/float'
 require_relative 'refinement/range'
 require_relative 'builder/extension'
 require_relative 'function/extension'
@@ -31,6 +32,11 @@ module Foruby
     refine Integer do
       import_methods IntegerRefinement
       @@make_alias[self, IntegerRefinement.instance_methods]
+    end
+
+    refine Float do
+      import_methods FloatRefinement
+      @@make_alias[self, FloatRefinement.instance_methods]
     end
 
     refine Kernel do

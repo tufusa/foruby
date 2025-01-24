@@ -1,5 +1,5 @@
-class Foruby::IntegerFragment < Foruby::Fragment[Integer]
-  type primitive = Integer
+class Foruby::RealFragment < Foruby::Fragment[Float]
+  type primitive = Float
 
   def +: (instance | primitive) -> instance
 

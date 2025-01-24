@@ -10,12 +10,14 @@ a = integer.set
 b = integer.parameter.set 1
 l = logical.set true
 arr = integer.dimension(3, -1..1).parameter.set(-10)
+r = real.parameter.set(Math::PI)
 
 puts 'Hello, world!'
 puts ((1 + 1 * 4 - 2).abs + -8.abs / 2).abs / 3
 puts a
 puts b
 puts arr
+puts r
 
 c = 1
 d = integer.set(2)

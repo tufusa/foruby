@@ -1,0 +1,17 @@
+class Foruby::RealFragment < Foruby::Fragment[Float]
+  type primitive = Float
+
+  def +: (instance | primitive) -> instance
+
+  def -: (instance | primitive) -> instance
+
+  def *: (instance | primitive) -> instance
+
+  def /: (instance | primitive) -> instance
+
+  def abs: () -> instance
+
+  def ==: (instance | primitive) -> Foruby::LogicalFragment
+
+  def !=: (instance | primitive) -> Foruby::LogicalFragment
+end

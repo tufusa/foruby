@@ -1,15 +1,17 @@
 class Foruby::IntegerFragment < Foruby::Fragment[Integer]
-  def +: (instance | Integer) -> instance
+  type primitive = Integer
 
-  def -: (instance | Integer) -> instance
+  def +: (instance | primitive) -> instance
 
-  def *: (instance | Integer) -> instance
+  def -: (instance | primitive) -> instance
 
-  def /: (instance | Integer) -> instance
+  def *: (instance | primitive) -> instance
+
+  def /: (instance | primitive) -> instance
 
   def abs: () -> instance
 
-  def ==: (instance | Integer) -> Foruby::LogicalFragment
+  def ==: (instance | primitive) -> Foruby::LogicalFragment
 
-  def !=: (instance | Integer) -> Foruby::LogicalFragment
+  def !=: (instance | primitive) -> Foruby::LogicalFragment
 end

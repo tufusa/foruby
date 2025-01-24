@@ -1,0 +1,17 @@
+module Foruby::Refinement::FloatRefinement
+  type fragment = Foruby::RealFragment
+
+  def _plus: (Float | fragment) -> fragment
+
+  def _minus: (Float | fragment) -> fragment
+
+  def _multiple: (Float | fragment) -> fragment
+
+  def _divide: (Float | fragment) -> fragment
+
+  def _abs: () -> fragment
+
+  def _equal: (Float | fragment) -> Foruby::LogicalFragment
+
+  def _not_equal: (Float | fragment) -> Foruby::LogicalFragment
+end

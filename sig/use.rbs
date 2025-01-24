@@ -1,0 +1,9 @@
+module Foruby::UseExtension
+  type aliases = Hash[Symbol | String, String]
+
+  def use: (String) -> void
+         | (String, aliases) -> void
+         | (String, only: String) -> void
+         | (String, only: aliases) -> void
+         | (String, only: Array[String | aliases]) -> void
+end

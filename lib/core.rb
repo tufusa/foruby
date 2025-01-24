@@ -51,6 +51,13 @@ module Foruby
       scope
     end
 
+    def self.add_use(use)
+      scopes[top_binding] = Scope.new unless scopes.key? top_binding
+
+      fragment = use.is_a?(Fragment) ? use : Fragment.new(code: use)
+      fragment.tap { scopes[top_binding].uses << _1 }
+    end
+
     def self.add_variable(name, builder)
       scopes[top_binding] = Scope.new unless scopes.key? top_binding
 

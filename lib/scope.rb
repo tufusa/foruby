@@ -3,10 +3,11 @@
 module Foruby
   # Scope
   class Scope
-    # @dynamic variables, fragments, functions
-    attr_reader :variables, :fragments, :functions
+    # @dynamic uses, variables, fragments, functions
+    attr_reader :uses, :variables, :fragments, :functions
 
     def initialize
+      @uses = []
       @variables = []
       @fragments = []
       @functions = []

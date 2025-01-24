@@ -5,7 +5,7 @@ require_relative 'integer'
 require_relative 'logical'
 
 module Foruby
-  # Extension for IntegerBuilder
+  # Extension for primitive builder
   module BuilderExtension
     def integer = IntegerBuilder.new
 

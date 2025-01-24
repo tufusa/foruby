@@ -10,6 +10,11 @@ module Foruby
       self
     end
 
+    def dimension(*dim)
+      @dimension = *dim
+      self
+    end
+
     def set(value = nil)
       raise NotImplementedError, 'Must be overrided'
     end

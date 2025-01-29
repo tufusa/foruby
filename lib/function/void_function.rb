@@ -32,7 +32,6 @@ module Foruby
               "Wrong number of arguments (given #{params.size}, expected #{@parameters.size})"
       end
 
-      params.each { Core.check _1 }
       Core.push "call #{name}(#{params.join ','})"
 
       nil
@@ -51,9 +50,9 @@ module Foruby
       params = @parameters.map do |key, type|
         fragment = case type
                    when IntegerBuilder
-                     IntegerFragment.new(code: '')
+                     IntegerFragment.new('')
                    else
-                     Fragment.new(code: '')
+                     Fragment.new('')
                    end
         fragment.tap { _1.variable = Variable.new key, 0 }
       end
@@ -66,7 +65,7 @@ module Foruby
       body = scope.fragments.map(&:code).join "\n"
 
       lambda do |name|
-        Fragment.new code: <<~CODE
+        Fragment.new <<~CODE.chomp
           subroutine #{name}(#{@parameters.keys.join ','})
             #{uses}
 
@@ -78,7 +77,6 @@ module Foruby
             #{body}
           end subroutine #{name}
         CODE
-          .chomp
       end
     end
   end

@@ -1,0 +1,5 @@
+class Foruby::RealFunction < Foruby::Function[Float]
+  def call: (*untyped) -> Foruby::RealFragment
+
+  alias [] call
+end

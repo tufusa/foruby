@@ -1,0 +1,5 @@
+class Foruby::IntegerFunction < Foruby::Function[Integer]
+  def call: (*untyped) -> Foruby::IntegerFragment
+
+  alias [] call
+end

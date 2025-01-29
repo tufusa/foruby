@@ -1,0 +1,27 @@
+class Integer
+  type fragment = Foruby::IntegerFragment
+
+  def +: (fragment) -> fragment
+       | (Foruby::RealFragment) -> Foruby::RealFragment
+       | ...
+
+  def -: (fragment) -> fragment
+       | (Foruby::RealFragment) -> Foruby::RealFragment
+       | ...
+
+  def *: (fragment) -> fragment
+       | (Foruby::RealFragment) -> Foruby::RealFragment
+       | ...
+
+  def /: (fragment) -> fragment
+       | (Foruby::RealFragment) -> Foruby::RealFragment
+       | ...
+
+  def %: (fragment) -> fragment
+       | (Foruby::RealFragment) -> Foruby::RealFragment
+       | ...
+
+  def ==: (fragment | Foruby::RealFragment) -> Foruby::LogicalFragment | ...
+
+  def !=: (fragment | Foruby::RealFragment) -> Foruby::LogicalFragment | ...
+end

@@ -1,14 +1,29 @@
 module Kernel
+  def self?.puts: (*(String | Foruby::Fragment[untyped])) -> void | ...
+
+  def self?.loop: () { () -> untyped } -> void | ...
+
   def self?.integer: () -> Foruby::IntegerBuilder
 
   def self?.real: () -> Foruby::RealBuilder
 
   def self?.logical: () -> Foruby::LogicalBuilder
 
-  def self?.function: [ReturnType < Object] (
+  def self?.function:(
     Hash[Symbol, Foruby::Builder[untyped]] parameters,
-    Foruby::Builder[ReturnType] return_type
-  ) { (*untyped) [self: Object & Foruby::Function::_Self[ReturnType]] -> untyped } -> Foruby::Function[ReturnType]
+    Foruby::IntegerBuilder return_type,
+    ?inline: bool
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[Integer & Object]] -> untyped } -> Foruby::IntegerFunction
+  | (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::RealBuilder return_type,
+    ?inline: bool
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[Float & Object]] -> untyped } -> Foruby::RealFunction
+  | (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::LogicalBuilder return_type,
+    ?inline: bool
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[bool & Object]] -> untyped } -> Foruby::LogicalFunction
   | (
     Hash[Symbol, Foruby::Builder[untyped]] parameters
   ) { (*untyped) -> untyped } -> Foruby::VoidFunction
@@ -18,4 +33,12 @@ module Kernel
                | (String, only: String) -> void
                | (String, only: Hash[Symbol, String]) -> void
                | (String, only: Array[String | Hash[Symbol, String]]) -> void
+
+  def self?.exp: (Foruby::IntegerFragment | Foruby::RealFragment) -> Foruby::RealFragment
+
+  def self?.sqrt: (Foruby::IntegerFragment | Foruby::RealFragment) -> Foruby::RealFragment
+  
+  def self?.cshift: (Foruby::IntegerFragment, Integer) -> Foruby::IntegerFragment
+                  | (Foruby::RealFragment, Integer) -> Foruby::RealFragment
+                  | (Foruby::LogicalFragment, Integer) -> Foruby::LogicalFragment
 end

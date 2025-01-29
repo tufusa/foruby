@@ -6,6 +6,8 @@ module Foruby
     module MakeAlias
       def make_alias(mod, methods)
         methods.each do |method|
+          next unless method.start_with? '_'
+
           base_name = method.to_s.delete_prefix('_')
           name = method_name base_name.to_sym
           mod.alias_method :"origin_#{name}", :"#{name}"
@@ -20,16 +22,21 @@ module Foruby
       end
 
       METHOD_MAP = {
+        unary_plus: :+@,
+        unary_minus: :-@,
         plus: :+,
         minus: :-,
         multiple: :*,
         divide: :/,
+        power: :**,
+        mod: :%,
         equal: :==,
         not: :!,
         and: :&,
         or: :|,
         xor: :^,
-        not_equal: :!=
+        not_equal: :!=,
+        spaceship: :<=>
       }.freeze
     end
   end

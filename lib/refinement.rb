@@ -8,6 +8,7 @@ require_relative 'refinement/range'
 require_relative 'builder/extension'
 require_relative 'function/extension'
 require_relative 'util/make_alias'
+require_relative 'util/integer_spaceship_extension'
 require_relative 'use'
 
 module Foruby
@@ -52,5 +53,8 @@ module Foruby
       import_methods RangeRefinement
       @@make_alias[self, RangeRefinement.instance_methods]
     end
+
+    # グローバルにprependしないといけないためrefineでは対応できない
+    Integer.prepend IntegerSpaceshipExtension
   end
 end

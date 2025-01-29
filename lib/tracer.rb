@@ -31,7 +31,6 @@ module Foruby
               Core.top_binding.receiver.define_singleton_method(name) { |*params| new_value[*params] }
               Core.add_function new_value
             elsif old_value.is_a?(Fragment) && !old_value.variable.nil? # assign
-              Core.check new_value
               Core.push old_value.variable.assignment(new_value.inspect)
 
               old_value.variable.value = new_value

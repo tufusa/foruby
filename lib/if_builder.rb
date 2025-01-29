@@ -6,14 +6,12 @@ module Foruby
   # If statement wrapper
   class IfBuilder
     def initialize(condition, &action)
-      Core.check condition
       condition = LogicalFragment.from condition
       @branches = [{ condition:, action: }]
       push_build
     end
 
     def else_if(condition, &action)
-      Core.check condition
       condition = LogicalFragment.from condition
       @branches << { condition:, action: }
       push_build
@@ -36,12 +34,12 @@ module Foruby
     def build
       raise RangeError, 'No branch to be built' if @branches.empty?
 
-      Fragment.new code: <<~CODE
-        #{if_statement}
-        #{else_if_statement || ''}
-        #{else_statement || ''}
-        #{end_if_statement}
-      CODE
+      Fragment.new [
+        if_statement,
+        else_if_statement,
+        else_statement,
+        end_if_statement
+      ].compact.join("\n")
     end
 
     def if_statement
@@ -53,7 +51,6 @@ module Foruby
         if (#{condition}) then
           #{body}
       IF
-        .chomp
     end
 
     def else_if_statement
@@ -66,7 +63,6 @@ module Foruby
           else if (#{condition}) then
             #{body}
         ELSE_IF
-          .chomp
       end&.join("\n")
     end
 
@@ -77,7 +73,6 @@ module Foruby
           else
             #{body}
         ELSE
-          .chomp
       end
     end
 

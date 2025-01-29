@@ -6,44 +6,44 @@ module Foruby
   # Fragment for integer
   class IntegerFragment < Fragment
     def +(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} + #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} + #{other.inspect})")
     end
 
     def -(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} - #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} - #{other.inspect})")
     end
 
     def *(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} * #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} * #{other.inspect})")
     end
 
     def /(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} / #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} / #{other.inspect})")
+    end
+
+    def %(other)
+      self.class.new("mod(#{inspect}, #{other.inspect})")
     end
 
     def abs
-      Core.check self
-      self.class.new(code: "abs(#{inspect})").tap { Core.push _1 }
+      self.class.new("abs(#{inspect})")
     end
 
     def ==(other)
-      Core.check self
-      Core.check other
-      LogicalFragment.new(code: "#{inspect} == #{other.inspect}").tap { Core.push _1 }
+      LogicalFragment.new("#{inspect} == #{other.inspect}")
     end
 
     def !=(other)
-      Core.check self
-      Core.check other
-      LogicalFragment.new(code: "#{inspect} /= #{other.inspect}").tap { Core.push _1 }
+      LogicalFragment.new("#{inspect} /= #{other.inspect}")
     end
+
+    def even? = self % 2 == 0 # rubocop:disable Style/EvenOdd, Style/NumericPredicate
+
+    def odd? = self % 2 == 1 # rubocop:disable Style/EvenOdd
+
+    def zero? = self == 0 # rubocop:disable Style/NumericPredicate
+
+    # IntegerとIntegerFragmentが混在したRangeを作るためのオーバーライド
+    def <=>(_other) = 0
   end
 end

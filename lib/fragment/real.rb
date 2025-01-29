@@ -5,45 +5,44 @@ require_relative '../fragment'
 module Foruby
   # Fragment for real
   class RealFragment < Fragment
+    def +@
+      self.class.new("(+#{inspect})")
+    end
+
+    def -@
+      self.class.new("(-#{inspect})")
+    end
+
     def +(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} + #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} + #{other.inspect})")
     end
 
     def -(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} - #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} - #{other.inspect})")
     end
 
     def *(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} * #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} * #{other.inspect})")
     end
 
     def /(other)
-      Core.check self
-      Core.check other
-      self.class.new(code: "(#{inspect} / #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} / #{other.inspect})")
+    end
+
+    def **(other)
+      self.class.new("(#{inspect}**#{other.inspect})")
     end
 
     def abs
-      Core.check self
-      self.class.new(code: "abs(#{inspect})").tap { Core.push _1 }
+      self.class.new("abs(#{inspect})")
     end
 
     def ==(other)
-      Core.check self
-      Core.check other
-      LogicalFragment.new(code: "#{inspect} == #{other.inspect}").tap { Core.push _1 }
+      LogicalFragment.new("#{inspect} == #{other.inspect}")
     end
 
     def !=(other)
-      Core.check self
-      Core.check other
-      LogicalFragment.new(code: "#{inspect} /= #{other.inspect}").tap { Core.push _1 }
+      LogicalFragment.new("#{inspect} /= #{other.inspect}")
     end
   end
 end

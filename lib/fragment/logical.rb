@@ -6,22 +6,17 @@ module Foruby
   # Fragment for logical
   class LogicalFragment < Fragment
     def !
-      Core.check self
-      self.class.new(code: "(.not. #{inspect})").tap { Core.push _1 }
+      self.class.new("(.not. #{inspect})")
     end
 
     def &(other)
-      Core.check self
-      Core.check other
       other = self.class.from other
-      self.class.new(code: "(#{inspect} .and. #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} .and. #{other.inspect})")
     end
 
     def |(other)
-      Core.check self
-      Core.check other
       other = self.class.from other
-      self.class.new(code: "(#{inspect} .or. #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} .or. #{other.inspect})")
     end
 
     def ^(other)
@@ -29,23 +24,19 @@ module Foruby
     end
 
     def ==(other)
-      Core.check self
-      Core.check other
       other = self.class.from other
-      self.class.new(code: "(#{inspect} .eqv. #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} .eqv. #{other.inspect})")
     end
 
     def !=(other)
-      Core.check self
-      Core.check other
       other = self.class.from other
-      self.class.new(code: "(#{inspect} .neqv. #{other.inspect})").tap { Core.push _1 }
+      self.class.new("(#{inspect} .neqv. #{other.inspect})")
     end
 
     def self.from(value)
       return value if value.is_a?(LogicalFragment)
 
-      new(code: ".#{value}.")
+      new(".#{value}.")
     end
   end
 end

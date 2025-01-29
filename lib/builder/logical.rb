@@ -6,16 +6,15 @@ module Foruby
   # Primitive builder for logical
   class LogicalBuilder < Builder
     def initialize
-      @value = nil
+      @fragment = nil
       super()
     end
 
     def set(value = nil)
-      @value = value if value
-      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && nil.equal?(@value)
+      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && value.nil?
 
-      fragment = @value&.then { LogicalFragment.from _1 }
-      LogicalFragment.new code: fragment&.inspect || '', builder: self
+      temp_fragment = value&.then { LogicalFragment.from _1 }
+      LogicalFragment.new(temp_fragment&.inspect || '', builder: self).tap { value && @fragment = _1 }
     end
 
     def declaration(name)
@@ -32,8 +31,8 @@ module Foruby
       attributes = [parameter, dimension]
                    .compact.join(',')
                    .then { "#{_1.empty? ? '' : ','}#{_1}" }
-      initial = @value.nil? ? '' : "= .#{@value}."
-      Fragment.new code: "logical#{attributes} :: #{name.to_str} #{initial}"
+      initial = @fragment.nil? ? '' : "= #{@fragment}"
+      Fragment.new "logical#{attributes} :: #{name.to_str} #{initial}"
     end
   end
 end

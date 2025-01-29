@@ -6,15 +6,20 @@ module Foruby
   # Primitive builder for real
   class RealBuilder < Builder
     def initialize
-      @value = nil
+      @fragment = nil
       super()
     end
 
     def set(value = nil)
-      @value = value.to_f if value
-      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && nil.equal?(@value)
+      code =
+        case value
+        when nil then nil
+        when Fragment then value.inspect
+        else value.to_f.inspect
+        end
+      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && code.nil?
 
-      RealFragment.new code: @value&.inspect || '', builder: self
+      RealFragment.new(code || '', builder: self).tap { code && @fragment = _1 }
     end
 
     def declaration(name)
@@ -31,8 +36,8 @@ module Foruby
       attributes = [parameter, dimension]
                    .compact.join(',')
                    .then { "#{_1.empty? ? '' : ','}#{_1}" }
-      initial = @value.nil? ? '' : "= #{@value}"
-      Fragment.new code: "real#{attributes} :: #{name.to_str} #{initial}"
+      initial = @fragment.nil? ? '' : "= #{@fragment}"
+      Fragment.new "real#{attributes} :: #{name.to_str} #{initial}"
     end
   end
 end

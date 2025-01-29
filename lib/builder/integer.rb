@@ -6,15 +6,20 @@ module Foruby
   # Primitive builder for integer
   class IntegerBuilder < Builder
     def initialize
-      @value = nil
+      @fragment = nil
       super()
     end
 
     def set(value = nil)
-      @value = value.to_int if value
-      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && nil.equal?(@value)
+      code =
+        case value
+        when nil then nil
+        when Fragment then value.inspect
+        else value.to_int.inspect
+        end
+      raise ArgumentError, 'No initial value despite parameter attribute' if @is_parameter && code.nil?
 
-      IntegerFragment.new code: @value&.inspect || '', builder: self
+      IntegerFragment.new(code || '', builder: self).tap { code && @fragment = _1 }
     end
 
     def declaration(name)
@@ -31,8 +36,8 @@ module Foruby
       attributes = [parameter, dimension]
                    .compact.join(',')
                    .then { "#{_1.empty? ? '' : ','}#{_1}" }
-      initial = @value.nil? ? '' : "= #{@value}"
-      Fragment.new code: "integer#{attributes} :: #{name.to_str} #{initial}"
+      initial = @fragment.nil? ? '' : "= #{@fragment}"
+      Fragment.new "integer#{attributes} :: #{name.to_str} #{initial}"
     end
   end
 end

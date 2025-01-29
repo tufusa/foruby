@@ -30,7 +30,7 @@ module Foruby
     def self.push(code)
       scopes[top_binding] = Scope.new unless scopes.key? top_binding
 
-      fragment = code.is_a?(Fragment) ? code : Fragment.new(code:)
+      fragment = code.is_a?(Fragment) ? code : Fragment.new(code)
       fragment.tap { scopes[top_binding].fragments << _1 }
     end
 
@@ -54,7 +54,7 @@ module Foruby
     def self.add_use(use)
       scopes[top_binding] = Scope.new unless scopes.key? top_binding
 
-      fragment = use.is_a?(Fragment) ? use : Fragment.new(code: use)
+      fragment = use.is_a?(Fragment) ? use : Fragment.new(use)
       fragment.tap { scopes[top_binding].uses << _1 }
     end
 

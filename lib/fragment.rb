@@ -10,7 +10,7 @@ module Foruby
     # @dynamic variable, variable=
     attr_accessor :variable
 
-    def initialize(code:, builder: nil)
+    def initialize(code, builder: nil)
       @code = code.to_str
       @builder = builder
       @variable = nil

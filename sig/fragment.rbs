@@ -8,5 +8,5 @@ class Foruby::Fragment[T]
   @buidler: Foruby::Builder[T]?
   @variable: Foruby::Variable[T]?
 
-  def initialize: (code: string, ?builder: Foruby::Builder[T]?) -> untyped
+  def initialize: (string, ?builder: Foruby::Builder[T]?) -> untyped
 end

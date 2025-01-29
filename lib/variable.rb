@@ -20,7 +20,7 @@ module Foruby
     end
 
     def assignment(value)
-      Fragment.new code: "#{name} = #{value}"
+      Fragment.new "#{name} = #{value}"
     end
   end
 end

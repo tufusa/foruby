@@ -2,16 +2,22 @@ module Foruby::Refinement::IntegerRefinement
   type fragment = Foruby::IntegerFragment
 
   def _plus: (Integer | fragment) -> fragment
+           | (Float | Foruby::RealFragment) -> Foruby::RealFragment
 
   def _minus: (Integer | fragment) -> fragment
+            | (Float | Foruby::RealFragment) -> Foruby::RealFragment
 
   def _multiple: (Integer | fragment) -> fragment
+               | (Float | Foruby::RealFragment) -> Foruby::RealFragment
 
   def _divide: (Integer | fragment) -> fragment
+             | (Float | Foruby::RealFragment) -> Foruby::RealFragment
 
-  def _abs: () -> fragment
+  def _mod: (Integer | fragment) -> fragment
 
-  def _equal: (Integer | fragment) -> Foruby::LogicalFragment
+  def _equal: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
 
-  def _not_equal: (Integer | fragment) -> Foruby::LogicalFragment
+  def _not_equal: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
+
+  def _spaceship: (Integer | fragment) -> Integer
 end

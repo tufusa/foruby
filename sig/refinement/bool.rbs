@@ -1,8 +1,6 @@
 module Foruby::Refinement::BoolRefinement
   type fragment = Foruby::LogicalFragment
 
-  def _not: () -> fragment
-
   def _and: (bool | fragment) -> fragment
 
   def _or: (bool | fragment) -> fragment

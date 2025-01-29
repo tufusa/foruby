@@ -7,28 +7,34 @@ module Foruby
   module Refinement
     # Refinement module for TrueClass/FalseClass
     module BoolRefinement
-      def _not
-        !LogicalFragment.new(code: method(:origin_inspect)[])
-      end
-
       def _and(other)
-        LogicalFragment.new(code: inspect) & other
+        return method(:"origin_&")[other] unless other.is_a? Fragment
+
+        LogicalFragment.new(inspect) & other
       end
 
       def _or(other)
-        LogicalFragment.new(code: inspect) | other
+        return method(:"origin_|")[other] unless other.is_a? Fragment
+
+        LogicalFragment.new(inspect) | other
       end
 
       def _xor(other)
-        LogicalFragment.new(code: inspect) ^ other
+        return method(:"origin_^")[other] unless other.is_a? Fragment
+
+        LogicalFragment.new(inspect) ^ other
       end
 
       def _equal(other)
-        LogicalFragment.new(code: inspect) == other
+        return method(:"origin_==")[other] unless other.is_a? Fragment
+
+        LogicalFragment.new(inspect) == other
       end
 
       def _not_equal(other)
-        LogicalFragment.new(code: inspect) != other
+        return method(:"origin_!=")[other] unless other.is_a? Fragment
+
+        LogicalFragment.new(inspect) != other
       end
 
       def _inspect

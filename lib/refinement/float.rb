@@ -8,31 +8,45 @@ module Foruby
     # Refinement module for Float
     module FloatRefinement
       def _plus(other)
-        RealFragment.new(code: inspect) + other
+        return method(:"origin_+")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect) + other
       end
 
       def _minus(other)
-        RealFragment.new(code: inspect) - other
+        return method(:"origin_-")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect) - other
       end
 
       def _multiple(other)
-        RealFragment.new(code: inspect) * other
+        return method(:"origin_*")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect) * other
       end
 
       def _divide(other)
-        RealFragment.new(code: inspect) / other
+        return method(:"origin_/")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect) / other
       end
 
-      def _abs
-        RealFragment.new(code: inspect).abs
+      def _power(other)
+        return method(:"origin_**")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect)**other
       end
 
       def _equal(other)
-        RealFragment.new(code: inspect) == other
+        return method(:"origin_==")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect) == other
       end
 
       def _not_equal(other)
-        RealFragment.new(code: inspect) != other
+        return method(:"origin_!=")[other] unless other.is_a? Fragment
+
+        RealFragment.new(inspect) != other
       end
     end
   end

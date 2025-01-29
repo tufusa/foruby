@@ -8,31 +8,72 @@ module Foruby
     # Refinement module for Integer
     module IntegerRefinement
       def _plus(other)
-        IntegerFragment.new(code: inspect) + other
+        case other
+        when Integer, Float then method(:"origin_+")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) + other
+        when RealFragment then RealFragment.new(inspect) + other
+        else raise ArgumentError
+        end
       end
 
       def _minus(other)
-        IntegerFragment.new(code: inspect) - other
+        case other
+        when Integer, Float then method(:"origin_-")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) - other
+        when RealFragment then RealFragment.new(inspect) - other
+        else raise ArgumentError
+        end
       end
 
       def _multiple(other)
-        IntegerFragment.new(code: inspect) * other
+        case other
+        when Integer, Float then method(:"origin_*")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) * other
+        when RealFragment then RealFragment.new(inspect) * other
+        else raise ArgumentError
+        end
       end
 
       def _divide(other)
-        IntegerFragment.new(code: inspect) / other
+        case other
+        when Integer, Float then method(:"origin_/")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) / other
+        when RealFragment then RealFragment.new(inspect) / other
+        else raise ArgumentError
+        end
       end
 
-      def _abs
-        IntegerFragment.new(code: inspect).abs
+      def _mod(other)
+        case other
+        when Integer then method(:"origin_-")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) - other
+        else raise ArgumentError
+        end
       end
 
       def _equal(other)
-        IntegerFragment.new(code: inspect) == other
+        case other
+        when Integer, Float then method(:"origin_==")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) == other
+        when RealFragment then RealFragment.new(inspect) == other
+        else raise ArgumentError
+        end
       end
 
       def _not_equal(other)
-        IntegerFragment.new(code: inspect) != other
+        case other
+        when Integer, Float then method(:"origin_!=")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) != other
+        when RealFragment then RealFragment.new(inspect) != other
+        else raise ArgumentError
+        end
+      end
+
+      # IntegerとIntegerFragmentが混在したRangeを作るためのオーバーライド
+      def _spaceship(other)
+        return 0 if other.is_a? IntegerFragment
+
+        method(:"origin_<=>")[other]
       end
     end
   end

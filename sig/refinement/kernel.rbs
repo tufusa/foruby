@@ -1,3 +1,13 @@
 module Foruby::Refinement::KernelRefinement
-  def _puts: (String | Foruby::Fragment[untyped]) -> void
+  def _puts: (*(String | Foruby::Fragment[untyped])) -> void
+
+  def _loop: () { () -> untyped } -> void
+
+  def exp: (Foruby::IntegerFragment | Foruby::RealFragment) -> Foruby::RealFragment
+
+  def sqrt: (Foruby::IntegerFragment | Foruby::RealFragment) -> Foruby::RealFragment
+
+  def cshift: (Foruby::IntegerFragment, Integer) -> Foruby::IntegerFragment
+            | (Foruby::RealFragment, Integer) -> Foruby::RealFragment
+            | (Foruby::LogicalFragment, Integer) -> Foruby::LogicalFragment
 end

@@ -1,0 +1,7 @@
+class Foruby::RealBuilder < Foruby::Builder[Float]
+  @fragment: Foruby::RealFragment?
+
+  def initialize: () -> void
+
+  def set: (?(float | Foruby::RealFragment)?) -> Foruby::RealFragment
+end

@@ -1,9 +1,0 @@
-module Foruby::FunctionExtension
-  def function: [ReturnType] (
-    Hash[Symbol, Foruby::Builder[untyped]] parameters,
-    Foruby::Builder[ReturnType & Object] return_type
-  ) { (*untyped) [self: Object & Foruby::Function::_Self[ReturnType & Object]] -> untyped } -> Foruby::Function[ReturnType & Object]
-  | (
-    Hash[Symbol, Foruby::Builder[untyped]] parameters
-  ) { (*untyped) -> untyped } -> Foruby::VoidFunction
-end

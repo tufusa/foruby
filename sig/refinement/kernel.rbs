@@ -1,3 +1,0 @@
-module Foruby::Refinement::KernelRefinement
-  def _puts: (String | Foruby::Fragment[untyped]) -> void
-end

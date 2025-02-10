@@ -1,0 +1,12 @@
+class Foruby::Builder[T]
+  @is_parameter: bool
+  @dimension: Array[int | range[Integer | Foruby::IntegerFragment]]?
+
+  def parameter: () -> self
+
+  def dimension: (*(Integer | range[Integer | Foruby::IntegerFragment])) -> self
+
+  def set: (?(T | Foruby::Fragment[T])?) -> Foruby::Fragment[T]
+
+  def declaration: (string) -> Foruby::Fragment[void]
+end

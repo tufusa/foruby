@@ -1,0 +1,5 @@
+class Foruby::LogicalFunction < Foruby::Function[bool]
+  def call: (*untyped) -> Foruby::LogicalFragment
+
+  alias [] call
+end

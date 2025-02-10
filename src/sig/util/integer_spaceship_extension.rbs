@@ -1,0 +1,6 @@
+module Foruby::IntegerSpaceshipExtension
+  def _spaceship: (Integer | Foruby::IntegerFragment) -> Integer
+
+  alias origin_spaceship <=>
+  alias <=> _spaceship
+end

@@ -1,0 +1,20 @@
+module Foruby::FunctionExtension
+  def function: (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::IntegerBuilder return_type,
+    ?inline: bool
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[Integer & Object]] -> untyped } -> Foruby::IntegerFunction
+  | (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::RealBuilder return_type,
+    ?inline: bool
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[Float & Object]] -> untyped } -> Foruby::RealFunction
+  | (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters,
+    Foruby::LogicalBuilder return_type,
+    ?inline: bool
+  ) { (*untyped) [self: Object & Foruby::Function::_Self[bool & Object]] -> untyped } -> Foruby::LogicalFunction
+  | (
+    Hash[Symbol, Foruby::Builder[untyped]] parameters
+  ) { (*untyped) -> untyped } -> Foruby::VoidFunction
+end

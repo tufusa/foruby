@@ -56,3 +56,4 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 out
+.gem_rbs_collection

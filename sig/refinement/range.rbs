@@ -1,5 +1,0 @@
-module Foruby::Refinement::RangeRefinement
-  include _Range[Integer]
-
-  def _each: () { (Foruby::IntegerFragment arg) -> Foruby::Fragment[untyped] } -> Foruby::Fragment[untyped]
-end

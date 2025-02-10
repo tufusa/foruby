@@ -1,0 +1,7 @@
+class Foruby::LogicalBuilder < Foruby::Builder[bool]
+  @fragment: Foruby::LogicalFragment?
+
+  def initialize: () -> void
+
+  def set: (?(bool | Foruby::LogicalFragment)?) -> Foruby::LogicalFragment
+end

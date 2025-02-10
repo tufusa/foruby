@@ -1,5 +1,0 @@
-class Foruby::LogicalBuilder < Foruby::Builder[bool]
-  def initialize: () -> void
-
-  def set: (?bool?) -> Foruby::LogicalFragment
-end

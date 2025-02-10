@@ -1,0 +1,32 @@
+class Foruby::IntegerFragment < Foruby::Fragment[Integer]
+  type primitive = Integer
+
+  def +: (instance | primitive) -> instance
+       | (Foruby::RealFragment | Float) -> Foruby::RealFragment
+
+  def -: (instance | primitive) -> instance
+       | (Foruby::RealFragment | Float) -> Foruby::RealFragment
+
+  def *: (instance | primitive) -> instance
+       | (Foruby::RealFragment | Float) -> Foruby::RealFragment
+
+  def /: (instance | primitive) -> instance
+       | (Foruby::RealFragment | Float) -> Foruby::RealFragment
+
+  def %: (instance | primitive) -> instance
+       | (Foruby::RealFragment | Float) -> Foruby::RealFragment
+
+  def abs: () -> instance
+
+  def ==: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
+
+  def !=: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
+
+  def even?: () -> Foruby::LogicalFragment
+
+  def odd?: () -> Foruby::LogicalFragment
+
+  def zero?: () -> Foruby::LogicalFragment
+
+  def <=>: (instance | primitive) -> Integer
+end

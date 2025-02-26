@@ -62,7 +62,7 @@ program = <<~PROGRAM
 
     #{body}
   #{contains}
-  endprogram main
+  end program main
 PROGRAM
 
 File.write output, program

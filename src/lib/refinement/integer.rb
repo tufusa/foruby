@@ -45,8 +45,8 @@ module Foruby
 
       def _mod(other)
         case other
-        when Integer then method(:"origin_-")[other]
-        when IntegerFragment then IntegerFragment.new(inspect) - other
+        when Integer then method(:"origin_%")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) % other
         else raise ArgumentError
         end
       end

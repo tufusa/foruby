@@ -47,17 +47,18 @@ module Foruby
     private
 
     def definer
-      params = @parameters.map do |key, type|
-        fragment = case type
-                   when IntegerBuilder
-                     IntegerFragment.new('')
-                   else
-                     Fragment.new('')
-                   end
-        fragment.tap { _1.variable = Variable.new key, 0 }
+      params = @parameters.map do |name, type|
+        case type
+        when IntegerBuilder then IntegerFragment.new('').tap { _1.variable = Variable.new name, 0 }
+        when RealBuilder then RealFragment.new('').tap { _1.variable = Variable.new name, 0.0 }
+        when LogicalBuilder then LogicalFragment.new('').tap { _1.variable = Variable.new name, false }
+        else raise NotImplementedError, 'Not impletemted type'
+        end
       end
-      params_definition = @parameters.keys.map { "integer, intent(in) :: #{_1}" }.join "\n"
-      scope = Core.add_block(@function.binding) do
+      params_definition = @parameters.map do |name, type|
+        type.declaration name.to_s
+      end.join "\n"
+      scope = Core.add_block @function.binding do
         @function[*params]
       end
       uses = scope.uses.map(&:code).join "\n"
@@ -68,7 +69,6 @@ module Foruby
         Fragment.new <<~CODE.chomp
           subroutine #{name}(#{@parameters.keys.join ','})
             #{uses}
-
             implicit none
 
             #{params_definition}

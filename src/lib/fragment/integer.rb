@@ -6,35 +6,51 @@ module Foruby
   # Fragment for integer
   class IntegerFragment < Fragment
     def +(other)
-      self.class.new("(#{inspect} + #{other.inspect})")
+      self.class.new "(#{inspect} + #{other.inspect})"
     end
 
     def -(other)
-      self.class.new("(#{inspect} - #{other.inspect})")
+      self.class.new "(#{inspect} - #{other.inspect})"
     end
 
     def *(other)
-      self.class.new("(#{inspect} * #{other.inspect})")
+      self.class.new "(#{inspect} * #{other.inspect})"
     end
 
     def /(other)
-      self.class.new("(#{inspect} / #{other.inspect})")
+      self.class.new "(#{inspect} / #{other.inspect})"
     end
 
     def %(other)
-      self.class.new("mod(#{inspect}, #{other.inspect})")
+      self.class.new "mod(#{inspect}, #{other.inspect})"
     end
 
     def abs
-      self.class.new("abs(#{inspect})")
+      self.class.new "abs(#{inspect})"
     end
 
     def ==(other)
-      LogicalFragment.new("#{inspect} == #{other.inspect}")
+      LogicalFragment.new "#{inspect} == #{other.inspect}"
     end
 
     def !=(other)
-      LogicalFragment.new("#{inspect} /= #{other.inspect}")
+      LogicalFragment.new "#{inspect} /= #{other.inspect}"
+    end
+
+    def <(other)
+      LogicalFragment.new "#{inspect} < #{other.inspect}"
+    end
+
+    def <=(other)
+      LogicalFragment.new "#{inspect} <= #{other.inspect}"
+    end
+
+    def >(other)
+      LogicalFragment.new "#{inspect} > #{other.inspect}"
+    end
+
+    def >=(other)
+      LogicalFragment.new "#{inspect} >= #{other.inspect}"
     end
 
     def even? = self % 2 == 0 # rubocop:disable Style/EvenOdd, Style/NumericPredicate

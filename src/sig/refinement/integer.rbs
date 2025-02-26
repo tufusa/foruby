@@ -19,5 +19,13 @@ module Foruby::Refinement::IntegerRefinement
 
   def _not_equal: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
 
+  def _less: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
+
+  def _less_or_equal: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
+
+  def _greater: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
+
+  def _greater_or_equal: (real | fragment | Foruby::RealFragment) -> Foruby::LogicalFragment
+
   def _spaceship: (Integer | fragment) -> Integer
 end

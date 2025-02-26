@@ -69,6 +69,42 @@ module Foruby
         end
       end
 
+      def _less(other)
+        case other
+        when Integer, Float then method(:"origin_<")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) < other
+        # when RealFragment then RealFragment.new(inspect) < other
+        else raise ArgumentError
+        end
+      end
+
+      def _less_or_equal(other)
+        case other
+        when Integer, Float then method(:"origin_<=")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) <= other
+        # when RealFragment then RealFragment.new(inspect) <= other
+        else raise ArgumentError
+        end
+      end
+
+      def _greater(other)
+        case other
+        when Integer, Float then method(:"origin_>")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) > other
+        # when RealFragment then RealFragment.new(inspect) > other
+        else raise ArgumentError
+        end
+      end
+
+      def _greater_or_equal(other)
+        case other
+        when Integer, Float then method(:"origin_>=")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) >= other
+        # when RealFragment then RealFragment.new(inspect) >= other
+        else raise ArgumentError
+        end
+      end
+
       # IntegerとIntegerFragmentが混在したRangeを作るためのオーバーライド
       def _spaceship(other)
         return 0 if other.is_a? IntegerFragment

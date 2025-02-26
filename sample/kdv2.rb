@@ -1,7 +1,5 @@
 # frozen-string-literal: true
 
-require './lib/foruby'
-
 f = Foruby.init binding
 
 # use 'gtool_history'
@@ -18,7 +16,7 @@ xmin = real.parameter.set 0.0
 xmax = real.parameter.set 3.0
 xl = real.parameter.set xmax - xmin
 
-dt = real.parameter.set 1e-6
+dt = real.parameter.set 1e-11
 nt = integer.parameter.set 50_000_000
 ndisp = integer.parameter.set nt / 50
 

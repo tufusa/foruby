@@ -2,7 +2,7 @@ f = Foruby.init binding
 
 size = integer.parameter.set 1024
 array = real.dimension(0...size).set 1
-times = 10
+times = integer.set 10
 
 transform = function(
   { x: real.dimension(0...size) },

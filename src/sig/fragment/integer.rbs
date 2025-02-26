@@ -22,6 +22,14 @@ class Foruby::IntegerFragment < Foruby::Fragment[Integer]
 
   def !=: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
 
+  def <: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
+
+  def <=: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
+
+  def >: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
+
+  def >=: (instance | Foruby::RealFragment | real) -> Foruby::LogicalFragment
+
   def even?: () -> Foruby::LogicalFragment
 
   def odd?: () -> Foruby::LogicalFragment

@@ -45,8 +45,8 @@ module Foruby
 
       def _mod(other)
         case other
-        when Integer then method(:"origin_-")[other]
-        when IntegerFragment then IntegerFragment.new(inspect) - other
+        when Integer then method(:"origin_%")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) % other
         else raise ArgumentError
         end
       end
@@ -65,6 +65,42 @@ module Foruby
         when Integer, Float then method(:"origin_!=")[other]
         when IntegerFragment then IntegerFragment.new(inspect) != other
         when RealFragment then RealFragment.new(inspect) != other
+        else raise ArgumentError
+        end
+      end
+
+      def _less(other)
+        case other
+        when Integer, Float then method(:"origin_<")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) < other
+        # when RealFragment then RealFragment.new(inspect) < other
+        else raise ArgumentError
+        end
+      end
+
+      def _less_or_equal(other)
+        case other
+        when Integer, Float then method(:"origin_<=")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) <= other
+        # when RealFragment then RealFragment.new(inspect) <= other
+        else raise ArgumentError
+        end
+      end
+
+      def _greater(other)
+        case other
+        when Integer, Float then method(:"origin_>")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) > other
+        # when RealFragment then RealFragment.new(inspect) > other
+        else raise ArgumentError
+        end
+      end
+
+      def _greater_or_equal(other)
+        case other
+        when Integer, Float then method(:"origin_>=")[other]
+        when IntegerFragment then IntegerFragment.new(inspect) >= other
+        # when RealFragment then RealFragment.new(inspect) >= other
         else raise ArgumentError
         end
       end

@@ -30,12 +30,16 @@ module Foruby
         divide: :/,
         power: :**,
         mod: :%,
-        equal: :==,
         not: :!,
         and: :&,
         or: :|,
         xor: :^,
+        equal: :==,
         not_equal: :!=,
+        less: :<,
+        less_or_equal: :<=,
+        greater: :>,
+        greater_or_equal: :>=,
         spaceship: :<=>
       }.freeze
     end

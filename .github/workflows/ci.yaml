@@ -15,4 +15,4 @@ jobs:
         with:
           bundler-cache: true
       - name: Type check
-        run: bundle exedc steep check
+        run: bundle exec steep check

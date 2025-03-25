@@ -19,10 +19,6 @@ module Foruby
       raise NotImplementedError, 'Must be overrided'
     end
 
-    def build
-      raise NotImplementedError, 'Must be overrided'
-    end
-
     def declaration(name)
       raise NotImplementedError, 'Must be overrided'
     end

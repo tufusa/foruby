@@ -1,0 +1,3 @@
+module Minitest::Spec::DSL::InstanceMethods
+  def _: (?untyped? value) ?{ (?) -> untyped } -> Minitest::Expectations | ...
+end

@@ -1,0 +1,3 @@
+module Kernel : ::BasicObject
+  private def describe: (untyped desc, *untyped additional_desc) { (?) [self: singleton(Minitest::Spec) & Minitest::Spec] -> untyped } -> untyped | ...
+end

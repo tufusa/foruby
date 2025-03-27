@@ -11,6 +11,8 @@ target :lib do
   ignore_signature 'src/sig/minitest/**/*.rbs'
 
   configure_code_diagnostics(Steep::Diagnostic::Ruby.all_error)
+
+  library 'minitest' # steep-vscodeでのエラー解消のため
 end
 
 target :test do

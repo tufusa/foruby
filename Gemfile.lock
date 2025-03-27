@@ -76,6 +76,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  minitest (~> 5.25.0)
   steep (~> 1.10.0)
 
 BUNDLED WITH

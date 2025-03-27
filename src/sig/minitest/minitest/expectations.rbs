@@ -1,0 +1,4 @@
+module Minitest::Expectations
+  # See Minitest::Assertions#assert_equal
+  def must_equal: (untyped act, ?untyped? msg) -> untyped
+end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../foruby'
 require_relative '../fragment/logical'
 
 module Foruby

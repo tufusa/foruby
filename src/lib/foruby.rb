@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require_relative 'core'
-require_relative 'refinement'
+require_relative 'refine'
 require_relative 'tracer'
 require_relative 'feature'
 
 # Foruby top module
 module Foruby
-  include Refinement
+  include Refine
 
   VERSION = '0.1.0'
 

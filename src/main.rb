@@ -89,7 +89,7 @@ exit unless params[:execute]
 
 puts '[execute]'
 
-Open3.popen3(binary) do |_in, out, err| # steep:ignore NoMethod
+Open3.popen3(binary) do |_in, out, err|
   # @type var out: IO
   # @type var err: IO
   out.each { print _1 }

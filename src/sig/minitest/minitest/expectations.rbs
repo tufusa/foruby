@@ -1,4 +1,21 @@
 module Minitest::Expectations
+  type message = Proc::_Callable | _Inspect
+
   # See Minitest::Assertions#assert_equal
-  def must_equal: (untyped act, ?untyped? msg) -> untyped
+  def must_equal: (untyped act, ?message? msg) -> untyped
+
+  # See Minitest::Assertions#assert_includes
+  def must_include: (untyped obj, ?message? msg) -> untyped
+
+  # See Minitest::Assertions#assert_instance_of
+  def must_be_instance_of: (Module | Class cls, ?message? msg) -> untyped
+
+  # See Minitest::Assertions#assert_kind_of
+  def must_be_kind_of: (Module | Class cls, ?message? msg) -> untyped
+
+  # See Minitest::Assertions#assert_nil
+  def must_be_nil: (?message? msg) -> untyped
+
+  # See Minitest::Assertions#assert_same
+  def must_be_same_as: (untyped act, ?message? msg) -> untyped
 end
